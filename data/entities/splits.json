@@ -1,0 +1,137 @@
+{
+  "entityId": "tool:splits",
+  "slug": "splits",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "general",
+  "sourceRefs": [
+    "tool-world-athletics-marathon"
+  ],
+  "relatedRefs": [
+    "tool:pace",
+    "knowledge:marathon-distance"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-26",
+  "updatedAt": "2026-10-27",
+  "reviewedAt": "2026-10-27",
+  "reviewDueAt": "2027-10-27",
+  "translations": [],
+  "details": {
+    "toolId": "tool:splits",
+    "specVersion": "1.1.0",
+    "inputs": [
+      {
+        "name": "totalDistance",
+        "type": "number",
+        "unit": "km or mi",
+        "required": true,
+        "minimum": 0.001,
+        "labels": {
+          "zh-CN": "总距离",
+          "en": "Total distance"
+        }
+      },
+      {
+        "name": "distanceUnit",
+        "type": "enum",
+        "unit": null,
+        "required": true,
+        "enumValues": [
+          "km",
+          "mi"
+        ],
+        "labels": {
+          "zh-CN": "距离单位",
+          "en": "Distance unit"
+        }
+      },
+      {
+        "name": "totalSeconds",
+        "type": "number",
+        "unit": "s",
+        "required": true,
+        "minimum": 1,
+        "labels": {
+          "zh-CN": "总时间（整数秒）",
+          "en": "Total time (whole seconds)"
+        }
+      },
+      {
+        "name": "splitDistance",
+        "type": "number",
+        "unit": "km or mi",
+        "required": true,
+        "minimum": 0.001,
+        "labels": {
+          "zh-CN": "分段距离",
+          "en": "Split distance"
+        }
+      },
+      {
+        "name": "strategy",
+        "type": "enum",
+        "unit": null,
+        "required": true,
+        "enumValues": [
+          "even",
+          "negative"
+        ],
+        "labels": {
+          "zh-CN": "分段策略",
+          "en": "Split strategy"
+        }
+      },
+      {
+        "name": "delta",
+        "type": "number",
+        "unit": null,
+        "required": false,
+        "minimum": 0,
+        "maximum": 0.1,
+        "labels": {
+          "zh-CN": "负分段差值",
+          "en": "Negative-split difference"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "splits",
+        "type": "array",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "分段表",
+          "en": "Split table"
+        }
+      },
+      {
+        "name": "splitCount",
+        "type": "number",
+        "unit": "splits",
+        "required": true,
+        "labels": {
+          "zh-CN": "分段数量",
+          "en": "Number of splits"
+        }
+      }
+    ],
+    "formulaDescription": "splitCount = ceil(totalDistance / splitDistance). Even strategy: each metre costs totalSeconds / totalMeters. Negative strategy with delta: the first half of the distance uses share (1 + delta) / 2 of total time and the second half uses (1 − delta) / 2, so the first-half pace per metre is totalSeconds × (1 + delta) / totalMeters and the second-half pace is totalSeconds × (1 − delta) / totalMeters. A segment crossing the midpoint is integrated with both paces. Exact split seconds are converted to whole seconds by largest remainder: floor every exact value, then give one extra second to the splits with the largest fractional parts, breaking ties by lower split index. The final cumulative time equals totalSeconds and no split is negative.",
+    "assumptions": [
+      "All splits use the same distance except the final partial split.",
+      "Even strategy assumes one constant pace; negative strategy assumes one pace before the halfway distance and one faster pace after it.",
+      "The negative-split difference delta defaults to 0.02 and is limited to 0 to 0.10.",
+      "The table does not model hills, wind, aid stations or race tactics.",
+      "Total time is entered as whole seconds so the largest-remainder allocation can conserve it exactly."
+    ],
+    "rounding": "Exact split durations are allocated as whole seconds by largest remainder; every split time adds up to the entered total and the final cumulative time equals it exactly.",
+    "caseRefs": [
+      "case-splits-10k",
+      "case-splits-partial",
+      "case-splits-mile",
+      "case-splits-negative-crossing",
+      "case-splits-negative-halves"
+    ]
+  }
+}

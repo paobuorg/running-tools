@@ -1,0 +1,112 @@
+{
+  "entityId": "tool:track-view",
+  "slug": "track-view",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "general",
+  "sourceRefs": [
+    "tool-gpx-standard",
+    "tool-geojson-rfc"
+  ],
+  "relatedRefs": [
+    "tool:splits",
+    "knowledge:recovery-day"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-26",
+  "updatedAt": "2026-10-27",
+  "reviewedAt": "2026-10-27",
+  "reviewDueAt": "2027-10-27",
+  "translations": [],
+  "details": {
+    "toolId": "tool:track-view",
+    "specVersion": "1.0.0",
+    "inputs": [
+      {
+        "name": "trackFile",
+        "type": "file",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "GPX 或 GeoJSON 文件",
+          "en": "GPX or GeoJSON file"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "distanceMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "labels": {
+          "zh-CN": "轨迹距离",
+          "en": "Track distance"
+        }
+      },
+      {
+        "name": "pointCount",
+        "type": "number",
+        "unit": "points",
+        "required": true,
+        "labels": {
+          "zh-CN": "坐标点数",
+          "en": "Point count"
+        }
+      },
+      {
+        "name": "start",
+        "type": "object",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "起点",
+          "en": "Start"
+        }
+      },
+      {
+        "name": "end",
+        "type": "object",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "终点",
+          "en": "End"
+        }
+      },
+      {
+        "name": "elevationGainMeters",
+        "type": "number",
+        "unit": "m",
+        "required": false,
+        "labels": {
+          "zh-CN": "累计爬升（无高程时为未知）",
+          "en": "Elevation gain (unknown without elevation data)"
+        }
+      },
+      {
+        "name": "warnings",
+        "type": "array",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "提示",
+          "en": "Warnings"
+        }
+      }
+    ],
+    "formulaDescription": "Parse GPX track points or GeoJSON LineString coordinates in order. Distance is the sum of WGS84 geodesic inverse distances between consecutive points. Elevation gain is the sum of positive differences between consecutive elevation values when present; otherwise it is reported as unknown.",
+    "assumptions": [
+      "Coordinates are WGS84 latitude/longitude.",
+      "GPX tracks and routes and GeoJSON LineStrings are supported; distances within each segment are summed and endpoints of separate segments are not joined.",
+      "The file is read locally in the browser and is not uploaded to a server.",
+      "GPS noise and gaps are not corrected; distances are informational, not a certified measurement.",
+      "Input files are limited to 20 MB and 200,000 coordinate points; larger files are rejected before processing."
+    ],
+    "rounding": "Distance and elevation gain to the nearest whole metre.",
+    "caseRefs": [
+      "case-track-view-equator",
+      "case-track-view-elevation"
+    ]
+  }
+}

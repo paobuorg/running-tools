@@ -1,0 +1,17 @@
+{
+  "caseId": "case-race-predict-half-marathon",
+  "toolId": "tool:race-predict",
+  "input": {
+    "knownDistanceMeters": 21097.5,
+    "knownTimeSeconds": 5700,
+    "targetDistanceMeters": 42195
+  },
+  "expected": {
+    "predictedSeconds": 11884,
+    "ratio": 2,
+    "paceSecondsPerKm": 282,
+    "paceSecondsPerMile": 453,
+    "speedKmh": 12.78
+  },
+  "basis": "Independent arithmetic: distance ratio 42195 / 21097.5 = 2. Riegel prediction 5700 × 2^1.06 = 11884.110 s, displayed as 11884 s. 11884.110 / 42.195 km = 281.65 s/km → 282 s/km; × 1.609344 = 453.3 → 453 s/mi; 42.195 / (11884.110 / 3600) = 12.78 km/h."
+}

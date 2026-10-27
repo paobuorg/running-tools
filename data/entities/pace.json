@@ -1,0 +1,155 @@
+{
+  "entityId": "tool:pace",
+  "slug": "pace",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "general",
+  "sourceRefs": [
+    "tool-world-athletics-marathon"
+  ],
+  "relatedRefs": [
+    "knowledge:marathon-distance",
+    "knowledge:easy-run"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-26",
+  "updatedAt": "2026-10-27",
+  "reviewedAt": "2026-10-27",
+  "reviewDueAt": "2027-10-27",
+  "translations": [],
+  "details": {
+    "toolId": "tool:pace",
+    "specVersion": "1.1.0",
+    "inputs": [
+      {
+        "name": "mode",
+        "type": "enum",
+        "unit": null,
+        "required": true,
+        "enumValues": [
+          "distance-time",
+          "distance-pace",
+          "time-pace"
+        ],
+        "labels": {
+          "zh-CN": "计算模式",
+          "en": "Calculation mode"
+        }
+      },
+      {
+        "name": "distance",
+        "type": "number",
+        "unit": "km or mi",
+        "required": false,
+        "minimum": 0.001,
+        "labels": {
+          "zh-CN": "距离",
+          "en": "Distance"
+        }
+      },
+      {
+        "name": "distanceUnit",
+        "type": "enum",
+        "unit": null,
+        "required": true,
+        "enumValues": [
+          "km",
+          "mi"
+        ],
+        "labels": {
+          "zh-CN": "距离单位",
+          "en": "Distance unit"
+        }
+      },
+      {
+        "name": "durationSeconds",
+        "type": "number",
+        "unit": "s",
+        "required": false,
+        "minimum": 1,
+        "labels": {
+          "zh-CN": "总时间（秒）",
+          "en": "Total time (seconds)"
+        }
+      },
+      {
+        "name": "paceSeconds",
+        "type": "number",
+        "unit": "s per selected distance unit",
+        "required": false,
+        "minimum": 1,
+        "labels": {
+          "zh-CN": "配速（秒/单位）",
+          "en": "Pace (seconds per unit)"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "distance",
+        "type": "number",
+        "unit": "selected distance unit",
+        "required": true,
+        "labels": {
+          "zh-CN": "距离",
+          "en": "Distance"
+        }
+      },
+      {
+        "name": "durationSeconds",
+        "type": "number",
+        "unit": "s",
+        "required": true,
+        "labels": {
+          "zh-CN": "总时间",
+          "en": "Total time"
+        }
+      },
+      {
+        "name": "paceSecondsPerKm",
+        "type": "number",
+        "unit": "s/km",
+        "required": true,
+        "labels": {
+          "zh-CN": "每公里配速",
+          "en": "Pace per kilometre"
+        }
+      },
+      {
+        "name": "paceSecondsPerMile",
+        "type": "number",
+        "unit": "s/mi",
+        "required": true,
+        "labels": {
+          "zh-CN": "每英里配速",
+          "en": "Pace per mile"
+        }
+      },
+      {
+        "name": "speedKmh",
+        "type": "number",
+        "unit": "km/h",
+        "required": true,
+        "labels": {
+          "zh-CN": "速度",
+          "en": "Speed"
+        }
+      }
+    ],
+    "formulaDescription": "Exactly two positive, finite values are entered. distance-time: distanceKm = distance × 1.609344 when the unit is mi, otherwise distance; paceSecondsPerKm = durationSeconds / distanceKm. distance-pace: durationSeconds = paceSeconds × distanceKm / paceUnitKm. time-pace: distanceKm = durationSeconds / paceSeconds × paceUnitKm. All three modes then use the same internal distance in metres and time in seconds to derive paceSecondsPerMile = paceSecondsPerKm × 1.609344 and speedKmh = distanceKm / (durationSeconds / 3600).",
+    "assumptions": [
+      "Exactly two of distance, total time and pace are supplied for each calculation.",
+      "The course or run is treated as the full entered distance.",
+      "Pace is an average; stops, hills and wind are not modelled separately.",
+      "Miles use the international mile of exactly 1,609.344 metres.",
+      "When a pace is entered, it applies to the selected kilometre or mile unit."
+    ],
+    "rounding": "Pace to the nearest whole second per kilometre or mile; speed to two decimal places; duration to the nearest whole second; distance to three decimal places.",
+    "caseRefs": [
+      "case-pace-10k",
+      "case-pace-5mi",
+      "case-pace-distance-pace",
+      "case-pace-time-pace"
+    ]
+  }
+}

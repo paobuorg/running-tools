@@ -1,0 +1,78 @@
+{
+  "caseId": "case-splits-10k",
+  "toolId": "tool:splits",
+  "input": {
+    "totalDistance": 10,
+    "distanceUnit": "km",
+    "totalSeconds": 3000,
+    "splitDistance": 1,
+    "strategy": "even",
+    "delta": 0.02
+  },
+  "expected": {
+    "splitCount": 10,
+    "splits": [
+      {
+        "index": 1,
+        "distance": 1,
+        "cumulativeSeconds": 300,
+        "splitSeconds": 300
+      },
+      {
+        "index": 2,
+        "distance": 1,
+        "cumulativeSeconds": 600,
+        "splitSeconds": 300
+      },
+      {
+        "index": 3,
+        "distance": 1,
+        "cumulativeSeconds": 900,
+        "splitSeconds": 300
+      },
+      {
+        "index": 4,
+        "distance": 1,
+        "cumulativeSeconds": 1200,
+        "splitSeconds": 300
+      },
+      {
+        "index": 5,
+        "distance": 1,
+        "cumulativeSeconds": 1500,
+        "splitSeconds": 300
+      },
+      {
+        "index": 6,
+        "distance": 1,
+        "cumulativeSeconds": 1800,
+        "splitSeconds": 300
+      },
+      {
+        "index": 7,
+        "distance": 1,
+        "cumulativeSeconds": 2100,
+        "splitSeconds": 300
+      },
+      {
+        "index": 8,
+        "distance": 1,
+        "cumulativeSeconds": 2400,
+        "splitSeconds": 300
+      },
+      {
+        "index": 9,
+        "distance": 1,
+        "cumulativeSeconds": 2700,
+        "splitSeconds": 300
+      },
+      {
+        "index": 10,
+        "distance": 1,
+        "cumulativeSeconds": 3000,
+        "splitSeconds": 300
+      }
+    ]
+  },
+  "basis": "Independent arithmetic: 10 km at 3000 s is 300 s per 1 km split; cumulative times are 300 × n seconds and the last equals 3000 s."
+}

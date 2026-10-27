@@ -1,0 +1,19 @@
+{
+  "caseId": "case-track-convert-elevation",
+  "toolId": "tool:track-convert",
+  "input": {
+    "sourceFormat": "geojson",
+    "targetFormat": "geojson",
+    "coordinates": [
+      [0, 0, 10],
+      [0.001, 0],
+      [0.002, 0, 15]
+    ]
+  },
+  "expected": {
+    "segmentCount": 1,
+    "pointCount": 3,
+    "elevationPointCount": 2
+  },
+  "basis": "Independent round-trip check: the GeoJSON LineString has one segment and three positions. Two positions carry an elevation value (10 and 15); the middle point has no elevation and must not be replaced by zero. Conversion must preserve order and coordinates."
+}

@@ -1,0 +1,27 @@
+{
+  "caseId": "case-run-walk-cycles",
+  "toolId": "tool:run-walk",
+  "input": {
+    "mode": "cycles",
+    "runSeconds": 120,
+    "walkSeconds": 60,
+    "cycles": 3
+  },
+  "expected": {
+    "requestedSeconds": 540,
+    "scheduledSeconds": 540,
+    "fullCycles": 3,
+    "runSecondsTotal": 360,
+    "walkSecondsTotal": 180,
+    "truncated": false,
+    "segments": [
+      { "cycle": 1, "kind": "run", "seconds": 120, "partial": false },
+      { "cycle": 1, "kind": "walk", "seconds": 60, "partial": false },
+      { "cycle": 2, "kind": "run", "seconds": 120, "partial": false },
+      { "cycle": 2, "kind": "walk", "seconds": 60, "partial": false },
+      { "cycle": 3, "kind": "run", "seconds": 120, "partial": false },
+      { "cycle": 3, "kind": "walk", "seconds": 60, "partial": false }
+    ]
+  },
+  "basis": "Independent arithmetic: each cycle is 120 + 60 = 180 s; 3 cycles = 540 s. Run total 3 × 120 = 360 s; walk total 3 × 60 = 180 s. The final walk is part of the plan and is not removed."
+}

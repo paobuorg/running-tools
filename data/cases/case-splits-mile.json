@@ -1,0 +1,23 @@
+{
+  "caseId": "case-splits-mile",
+  "toolId": "tool:splits",
+  "input": {
+    "totalDistance": 5,
+    "distanceUnit": "mi",
+    "totalSeconds": 2400,
+    "splitDistance": 1,
+    "strategy": "even",
+    "delta": 0.02
+  },
+  "expected": {
+    "splitCount": 5,
+    "splits": [
+      { "index": 1, "distance": 1, "cumulativeSeconds": 480, "splitSeconds": 480 },
+      { "index": 2, "distance": 1, "cumulativeSeconds": 960, "splitSeconds": 480 },
+      { "index": 3, "distance": 1, "cumulativeSeconds": 1440, "splitSeconds": 480 },
+      { "index": 4, "distance": 1, "cumulativeSeconds": 1920, "splitSeconds": 480 },
+      { "index": 5, "distance": 1, "cumulativeSeconds": 2400, "splitSeconds": 480 }
+    ]
+  },
+  "basis": "Independent arithmetic: 2400 s over 5 international miles is 480 s per mile. Five 1-mile splits each take 480 s and sum to 2400 s."
+}

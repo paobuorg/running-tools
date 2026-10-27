@@ -1,0 +1,17 @@
+{
+  "caseId": "case-race-predict-10k-half",
+  "toolId": "tool:race-predict",
+  "input": {
+    "knownDistanceMeters": 10000,
+    "knownTimeSeconds": 3000,
+    "targetDistanceMeters": 21097.5
+  },
+  "expected": {
+    "predictedSeconds": 6619,
+    "ratio": 2.10975,
+    "paceSecondsPerKm": 314,
+    "paceSecondsPerMile": 505,
+    "speedKmh": 11.47
+  },
+  "basis": "Independent arithmetic: distance ratio 21097.5 / 10000 = 2.10975. Riegel prediction 3000 × 2.10975^1.06 = 6619.209 s, displayed as 6619 s. 6619.209 / 21.0975 km = 313.744 s/km → 314 s/km; × 1.609344 = 504.94 → 505 s/mi; 21.0975 / (6619.209 / 3600) = 11.47 km/h."
+}

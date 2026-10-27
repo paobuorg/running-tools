@@ -1,0 +1,12 @@
+{
+  "sourceId": "tool-ramer-1972",
+  "title": "An iterative procedure for the polygonal approximation of plane curves",
+  "url": "https://doi.org/10.1016/0146-664X(72)90005-8",
+  "publisher": "Computer Graphics and Image Processing",
+  "publishedAt": null,
+  "accessedAt": "2026-10-27",
+  "claims": [
+    "Ramer described an iterative procedure for polygonal approximation of plane curves."
+  ],
+  "license": null
+}

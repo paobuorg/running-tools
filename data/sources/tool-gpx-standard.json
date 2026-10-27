@@ -1,0 +1,13 @@
+{
+  "sourceId": "tool-gpx-standard",
+  "title": "GPS Exchange Format (GPX) 1.1",
+  "url": "https://www.topografix.com/GPX/1/1/",
+  "publisher": "TopoGrafix",
+  "publishedAt": null,
+  "accessedAt": "2026-10-26",
+  "claims": [
+    "GPX is an XML schema for exchanging GPS data.",
+    "GPX 1.1 defines track, route and waypoint structures with latitude, longitude and optional elevation."
+  ],
+  "license": null
+}

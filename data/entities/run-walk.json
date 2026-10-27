@@ -1,0 +1,174 @@
+{
+  "entityId": "tool:run-walk",
+  "slug": "run-walk",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "general",
+  "sourceRefs": [
+    "tool-nhs-couch-to-5k"
+  ],
+  "relatedRefs": [
+    "tool:pace",
+    "tool:splits",
+    "knowledge:easy-run"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-26",
+  "updatedAt": "2026-10-27",
+  "reviewedAt": "2026-10-27",
+  "reviewDueAt": "2027-10-27",
+  "translations": [],
+  "details": {
+    "toolId": "tool:run-walk",
+    "specVersion": "1.0.0",
+    "inputs": [
+      {
+        "name": "mode",
+        "type": "enum",
+        "unit": null,
+        "required": true,
+        "enumValues": [
+          "cycles",
+          "duration"
+        ],
+        "labels": {
+          "zh-CN": "规划模式",
+          "en": "Planning mode"
+        }
+      },
+      {
+        "name": "runSeconds",
+        "type": "number",
+        "unit": "s",
+        "required": true,
+        "minimum": 1,
+        "labels": {
+          "zh-CN": "每轮跑步时长（秒）",
+          "en": "Run duration per cycle (seconds)"
+        }
+      },
+      {
+        "name": "walkSeconds",
+        "type": "number",
+        "unit": "s",
+        "required": true,
+        "minimum": 0,
+        "labels": {
+          "zh-CN": "每轮步行时长（秒）",
+          "en": "Walk duration per cycle (seconds)"
+        }
+      },
+      {
+        "name": "cycles",
+        "type": "number",
+        "unit": "cycles",
+        "required": false,
+        "minimum": 1,
+        "maximum": 1000,
+        "labels": {
+          "zh-CN": "循环数（循环数模式）",
+          "en": "Number of cycles (cycles mode)"
+        }
+      },
+      {
+        "name": "totalSeconds",
+        "type": "number",
+        "unit": "s",
+        "required": false,
+        "minimum": 1,
+        "maximum": 604800,
+        "labels": {
+          "zh-CN": "总时长（总时长模式，秒）",
+          "en": "Total duration (duration mode, seconds)"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "requestedSeconds",
+        "type": "number",
+        "unit": "s",
+        "required": true,
+        "labels": {
+          "zh-CN": "请求时长",
+          "en": "Requested duration"
+        }
+      },
+      {
+        "name": "scheduledSeconds",
+        "type": "number",
+        "unit": "s",
+        "required": true,
+        "labels": {
+          "zh-CN": "计划总时长",
+          "en": "Scheduled duration"
+        }
+      },
+      {
+        "name": "fullCycles",
+        "type": "number",
+        "unit": "cycles",
+        "required": true,
+        "labels": {
+          "zh-CN": "完整轮数",
+          "en": "Full cycles"
+        }
+      },
+      {
+        "name": "segments",
+        "type": "array",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "跑走分段",
+          "en": "Run and walk segments"
+        }
+      },
+      {
+        "name": "runSecondsTotal",
+        "type": "number",
+        "unit": "s",
+        "required": true,
+        "labels": {
+          "zh-CN": "跑步总时长",
+          "en": "Total running time"
+        }
+      },
+      {
+        "name": "walkSecondsTotal",
+        "type": "number",
+        "unit": "s",
+        "required": true,
+        "labels": {
+          "zh-CN": "步行总时长",
+          "en": "Total walking time"
+        }
+      },
+      {
+        "name": "truncated",
+        "type": "boolean",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "末段是否被截断",
+          "en": "Whether the final segment is truncated"
+        }
+      }
+    ],
+    "formulaDescription": "Cycles mode schedules cycles × (runSeconds + walkSeconds); every cycle contains a run and, when walkSeconds is greater than zero, a walk, including the final cycle. Duration mode repeats the run and walk in order until totalSeconds is used up; if a segment would cross the requested total, it is cut at the boundary and marked partial. Times are whole seconds internally. No distance is inferred from time.",
+    "assumptions": [
+      "Run duration must be a positive whole number of seconds; walk duration may be zero.",
+      "Cycles mode accepts 1 to 1000 whole cycles; duration mode accepts a whole number of seconds up to 7 days.",
+      "Duration mode ends as soon as the requested time is reached, even if that cuts a run or walk short.",
+      "A zero walk duration omits walk segments rather than emitting zero-length rows.",
+      "The plan is arithmetic only: it does not estimate distance, pace, fitness, injury risk or medical suitability.",
+      "Both modes reject a plan longer than 7 days (604,800 seconds) and more than 3,000 generated segments."
+    ],
+    "rounding": "All durations are entered and reported as whole seconds; no additional rounding is applied.",
+    "caseRefs": [
+      "case-run-walk-cycles",
+      "case-run-walk-duration",
+      "case-run-walk-zero-walk"
+    ]
+  }
+}

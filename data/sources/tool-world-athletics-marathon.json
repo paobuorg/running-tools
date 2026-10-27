@@ -1,0 +1,13 @@
+{
+  "sourceId": "tool-world-athletics-marathon",
+  "title": "Marathon — World Athletics disciplines",
+  "url": "https://worldathletics.org/disciplines/road-running/marathon",
+  "publisher": "World Athletics",
+  "publishedAt": null,
+  "accessedAt": "2026-10-26",
+  "claims": [
+    "The marathon is a road running event over 42.195 kilometres.",
+    "The distance is also expressed as 26 miles and 385 yards."
+  ],
+  "license": null
+}

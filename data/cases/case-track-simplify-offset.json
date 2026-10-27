@@ -1,0 +1,18 @@
+{
+  "caseId": "case-track-simplify-offset",
+  "toolId": "tool:track-simplify",
+  "input": {
+    "toleranceMeters": 10,
+    "coordinates": [
+      [0, 0],
+      [0.001, 0.00005],
+      [0.002, 0]
+    ]
+  },
+  "expected": {
+    "segmentCount": 1,
+    "originalPointCount": 3,
+    "simplifiedPointCount": 2
+  },
+  "basis": "Independent arithmetic: 0.00005 degrees of latitude is about 5.56 m. The middle point deviates from the straight chord by about 5.6 m, which is below the 10 m projected tolerance, so it is removed. Both endpoints remain."
+}

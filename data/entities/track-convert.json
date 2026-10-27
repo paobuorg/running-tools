@@ -1,0 +1,120 @@
+{
+  "entityId": "tool:track-convert",
+  "slug": "track-convert",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "general",
+  "sourceRefs": [
+    "tool-gpx-standard",
+    "tool-geojson-rfc"
+  ],
+  "relatedRefs": [
+    "tool:track-view",
+    "tool:track-simplify"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-26",
+  "updatedAt": "2026-10-27",
+  "reviewedAt": "2026-10-27",
+  "reviewDueAt": "2027-10-27",
+  "translations": [],
+  "details": {
+    "toolId": "tool:track-convert",
+    "specVersion": "1.0.0",
+    "inputs": [
+      {
+        "name": "trackFile",
+        "type": "file",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "GPX 或 GeoJSON 线路文件",
+          "en": "GPX or GeoJSON line file"
+        }
+      },
+      {
+        "name": "targetFormat",
+        "type": "enum",
+        "unit": null,
+        "required": true,
+        "enumValues": [
+          "gpx",
+          "geojson"
+        ],
+        "labels": {
+          "zh-CN": "输出格式",
+          "en": "Output format"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "outputFormat",
+        "type": "enum",
+        "unit": null,
+        "required": true,
+        "enumValues": [
+          "gpx",
+          "geojson"
+        ],
+        "labels": {
+          "zh-CN": "输出格式",
+          "en": "Output format"
+        }
+      },
+      {
+        "name": "pointCount",
+        "type": "number",
+        "unit": "points",
+        "required": true,
+        "labels": {
+          "zh-CN": "输出坐标点数",
+          "en": "Output point count"
+        }
+      },
+      {
+        "name": "segmentCount",
+        "type": "number",
+        "unit": "segments",
+        "required": true,
+        "labels": {
+          "zh-CN": "输出线段数",
+          "en": "Output segment count"
+        }
+      },
+      {
+        "name": "distanceMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "labels": {
+          "zh-CN": "WGS84 测地距离",
+          "en": "WGS84 geodesic distance"
+        }
+      },
+      {
+        "name": "fileSizeBytes",
+        "type": "number",
+        "unit": "bytes",
+        "required": true,
+        "labels": {
+          "zh-CN": "输出文件大小",
+          "en": "Output file size"
+        }
+      }
+    ],
+    "formulaDescription": "Parse only line geometry. GPX trkseg and rte elements become independent segments; GeoJSON LineString, MultiLineString and FeatureCollection or Feature wrappers containing only those types are accepted. Serialize the ordered coordinates to the target format, writing elevation only when a point has it. The output contains no timestamps, device names, person names or original metadata.",
+    "assumptions": [
+      "Input coordinates are WGS84 longitude and latitude in that order.",
+      "Only line geometry is accepted; points, polygons and other geometry types are rejected rather than silently discarded.",
+      "Distance is the WGS84 geodesic distance between consecutive points and is informational, not a certified course measurement.",
+      "Conversion re-serializes the geometry, so the output is not byte-identical to the original even when the format is unchanged.",
+      "Missing elevation stays missing; it is never written as zero.",
+      "Input files are limited to 20 MB and 200,000 coordinate points; larger files are rejected before processing."
+    ],
+    "rounding": "Coordinates and elevation values are preserved as parsed; distance is reported to the nearest whole metre; file size is reported in bytes, with binary-friendly units only for display.",
+    "caseRefs": [
+      "case-track-convert-elevation"
+    ]
+  }
+}

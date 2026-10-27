@@ -1,0 +1,18 @@
+{
+  "caseId": "case-pace-distance-pace",
+  "toolId": "tool:pace",
+  "input": {
+    "mode": "distance-pace",
+    "distance": 10,
+    "distanceUnit": "km",
+    "paceSeconds": 300,
+    "paceUnit": "km"
+  },
+  "expected": {
+    "durationSeconds": 3000,
+    "paceSecondsPerKm": 300,
+    "paceSecondsPerMile": 483,
+    "speedKmh": 12
+  },
+  "basis": "Independent arithmetic: 10 km × 300 s/km = 3000 s. 300 × 1.609344 = 482.8032, rounded to 483 s/mi. 10 km in 3000 s is 12 km/h."
+}

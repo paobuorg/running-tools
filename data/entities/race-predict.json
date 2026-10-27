@@ -1,0 +1,130 @@
+{
+  "entityId": "tool:race-predict",
+  "slug": "race-predict",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "general",
+  "sourceRefs": [
+    "tool-riegel-prediction",
+    "tool-world-athletics-marathon"
+  ],
+  "relatedRefs": [
+    "tool:pace",
+    "tool:splits",
+    "knowledge:marathon-distance",
+    "knowledge:easy-run"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-26",
+  "updatedAt": "2026-10-27",
+  "reviewedAt": "2026-10-27",
+  "reviewDueAt": "2027-10-27",
+  "translations": [],
+  "details": {
+    "toolId": "tool:race-predict",
+    "specVersion": "1.0.0",
+    "inputs": [
+      {
+        "name": "knownDistanceMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "minimum": 5000,
+        "maximum": 42195,
+        "labels": {
+          "zh-CN": "已知成绩距离（米）",
+          "en": "Known race distance (metres)"
+        }
+      },
+      {
+        "name": "knownTimeSeconds",
+        "type": "number",
+        "unit": "s",
+        "required": true,
+        "minimum": 1,
+        "labels": {
+          "zh-CN": "已知成绩时间（秒）",
+          "en": "Known race time (seconds)"
+        }
+      },
+      {
+        "name": "targetDistanceMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "minimum": 5000,
+        "maximum": 42195,
+        "labels": {
+          "zh-CN": "目标距离（米）",
+          "en": "Target distance (metres)"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "predictedSeconds",
+        "type": "number",
+        "unit": "s",
+        "required": true,
+        "labels": {
+          "zh-CN": "估算完赛时间（秒）",
+          "en": "Predicted finish time (seconds)"
+        }
+      },
+      {
+        "name": "ratio",
+        "type": "number",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "距离比",
+          "en": "Distance ratio"
+        }
+      },
+      {
+        "name": "paceSecondsPerKm",
+        "type": "number",
+        "unit": "s/km",
+        "required": true,
+        "labels": {
+          "zh-CN": "估算每公里配速",
+          "en": "Predicted pace per kilometre"
+        }
+      },
+      {
+        "name": "paceSecondsPerMile",
+        "type": "number",
+        "unit": "s/mi",
+        "required": true,
+        "labels": {
+          "zh-CN": "估算每英里配速",
+          "en": "Predicted pace per mile"
+        }
+      },
+      {
+        "name": "speedKmh",
+        "type": "number",
+        "unit": "km/h",
+        "required": true,
+        "labels": {
+          "zh-CN": "估算平均速度",
+          "en": "Predicted average speed"
+        }
+      }
+    ],
+    "formulaDescription": "Riegel estimate: predictedSeconds = knownTimeSeconds × (targetDistanceMeters / knownDistanceMeters)^1.06. The distance ratio is reported directly. Predicted pace per kilometre is predictedSeconds divided by target kilometres; pace per mile multiplies that by 1.609344; speed in km/h is target kilometres divided by predicted hours.",
+    "assumptions": [
+      "Both the known and target distance must be between 5000 and 42195 metres.",
+      "The known performance and the target race are treated as road races completed under comparable training, fitness and conditions.",
+      "The exponent is fixed at 1.06 as a product default; it is an empirical simplification, not a universal law for every runner.",
+      "No confidence interval, probability of achieving the time, or adjustment for course, weather, heat or altitude is provided.",
+      "The estimate is not intended for trail running, ultramarathon distances or prescribing training."
+    ],
+    "rounding": "Predicted time to the nearest whole second; pace per kilometre and per mile to the nearest whole second; speed to two decimal places; distance ratio to six decimal places when displayed.",
+    "caseRefs": [
+      "case-race-predict-5k-10k",
+      "case-race-predict-10k-half",
+      "case-race-predict-half-marathon"
+    ]
+  }
+}

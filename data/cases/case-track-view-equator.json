@@ -1,0 +1,20 @@
+{
+  "caseId": "case-track-view-equator",
+  "toolId": "tool:track-view",
+  "input": {
+    "format": "geojson",
+    "coordinates": [
+      [0, 0],
+      [0.01, 0],
+      [0.02, 0]
+    ]
+  },
+  "expected": {
+    "distanceMeters": 2226,
+    "pointCount": 3,
+    "start": { "longitude": 0, "latitude": 0 },
+    "end": { "longitude": 0.02, "latitude": 0 },
+    "elevationGainMeters": null
+  },
+  "basis": "Independent WGS84 arithmetic on the equator: each 0.01 degree of longitude is about 1113.1949 m, so 0.02 degrees is about 2226.3898 m, rounded to 2226 m. No elevations are present, so gain stays null."
+}

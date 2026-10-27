@@ -1,0 +1,13 @@
+{
+  "sourceId": "tool-geojson-rfc",
+  "title": "RFC 7946: The GeoJSON Format",
+  "url": "https://www.rfc-editor.org/rfc/rfc7946",
+  "publisher": "Internet Engineering Task Force",
+  "publishedAt": "2016-08-01",
+  "accessedAt": "2026-10-26",
+  "claims": [
+    "GeoJSON defines JSON-based geospatial objects including LineString coordinates.",
+    "GeoJSON coordinates use longitude, latitude order and positions may include elevation."
+  ],
+  "license": null
+}

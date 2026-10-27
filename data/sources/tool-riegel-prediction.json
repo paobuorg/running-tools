@@ -1,0 +1,13 @@
+{
+  "sourceId": "tool-riegel-prediction",
+  "title": "Prediction and Quantification of Individual Athletic Performance of Runners",
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4919094/",
+  "publisher": "PLoS One / PubMed Central",
+  "publishedAt": null,
+  "accessedAt": "2026-10-26",
+  "claims": [
+    "The Riegel formula predicts performance by fitting a constant to each runner and fixing the distance exponent at 1.06.",
+    "The paper treats the formula as a model of endurance performance rather than a guarantee of future race times."
+  ],
+  "license": "CC-BY-4.0"
+}

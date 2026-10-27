@@ -1,0 +1,26 @@
+{
+  "caseId": "case-run-walk-duration",
+  "toolId": "tool:run-walk",
+  "input": {
+    "mode": "duration",
+    "runSeconds": 120,
+    "walkSeconds": 60,
+    "totalSeconds": 400
+  },
+  "expected": {
+    "requestedSeconds": 400,
+    "scheduledSeconds": 400,
+    "fullCycles": 2,
+    "runSecondsTotal": 280,
+    "walkSecondsTotal": 120,
+    "truncated": true,
+    "segments": [
+      { "cycle": 1, "kind": "run", "seconds": 120, "partial": false },
+      { "cycle": 1, "kind": "walk", "seconds": 60, "partial": false },
+      { "cycle": 2, "kind": "run", "seconds": 120, "partial": false },
+      { "cycle": 2, "kind": "walk", "seconds": 60, "partial": false },
+      { "cycle": 3, "kind": "run", "seconds": 40, "partial": true }
+    ]
+  },
+  "basis": "Independent arithmetic: two full cycles use 2 × (120 + 60) = 360 s, leaving 40 s. The third run is cut to 40 s, so the plan ends on a partial run. Run total 120 + 120 + 40 = 280 s; walk total 60 + 60 = 120 s; total 400 s."
+}

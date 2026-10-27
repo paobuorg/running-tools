@@ -1,0 +1,21 @@
+{
+  "caseId": "case-splits-negative-crossing",
+  "toolId": "tool:splits",
+  "input": {
+    "totalDistance": 10,
+    "distanceUnit": "km",
+    "totalSeconds": 3000,
+    "splitDistance": 4,
+    "strategy": "negative",
+    "delta": 0.02
+  },
+  "expected": {
+    "splitCount": 3,
+    "splits": [
+      { "index": 1, "distance": 4, "cumulativeSeconds": 1224, "splitSeconds": 1224 },
+      { "index": 2, "distance": 4, "cumulativeSeconds": 2412, "splitSeconds": 1188 },
+      { "index": 3, "distance": 2, "cumulativeSeconds": 3000, "splitSeconds": 588 }
+    ]
+  },
+  "basis": "Independent arithmetic with delta 0.02: the first 5 km take 51% of 3000 s = 1530 s (306 s/km) and the second 5 km take 1470 s (294 s/km). A 4 km split is 4 × 306 = 1224 s. The second split crosses 5 km: 1 × 306 + 3 × 294 = 1188 s. The final 2 km is 2 × 294 = 588 s. Sum = 3000 s."
+}

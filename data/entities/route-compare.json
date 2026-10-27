@@ -1,0 +1,73 @@
+{
+  "entityId": "tool:route-compare",
+  "slug": "route-compare",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "general",
+  "sourceRefs": [
+    "route-world-athletics-marathon",
+    "route-utmb-2026",
+    "route-baa-course"
+  ],
+  "relatedRefs": [
+    "tool:track-view",
+    "route:boston",
+    "route:utmb"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-26",
+  "updatedAt": "2026-10-27",
+  "reviewedAt": "2026-10-27",
+  "reviewDueAt": "2027-10-27",
+  "translations": [],
+  "details": {
+    "toolId": "tool:route-compare",
+    "specVersion": "1.0.0",
+    "inputs": [
+      {
+        "name": "routeIds",
+        "type": "array",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "已发布赛道版本（2 至 4 个）",
+          "en": "Published route versions (2 to 4)"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "comparisonTable",
+        "type": "array",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "距离、高程口径、路面与技术性对照表",
+          "en": "Distance, elevation basis, surface and technicality comparison"
+        }
+      },
+      {
+        "name": "missingValues",
+        "type": "array",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "缺失值（显示为未知）",
+          "en": "Missing values (shown as unknown)"
+        }
+      }
+    ],
+    "formulaDescription": "Select two to four distinct published route versions. For each version, display the recorded course distance, elevation gain and its stated basis, surface and technicality. Missing elevation, surface or technicality is reported as unknown. The table is a field-by-field record, not a ranking; no safety, difficulty or suitability score is calculated.",
+    "assumptions": [
+      "Only published route versions are eligible; an in-review route cannot be compared as if it were published.",
+      "Distance and elevation values may come from different official sources and methods, so their basis is shown instead of pretending they share one measurement standard.",
+      "A missing value is unknown, not zero; the tool never fills gaps to make a column look complete.",
+      "Geometry availability and licensing differ by route and do not imply permission to redistribute a track.",
+      "No safety, difficulty or suitability ranking is produced from distance, elevation, surface or technicality."
+    ],
+    "rounding": "Distance is displayed to three decimal places in kilometres; elevation gain to the nearest whole metre; missing values remain unknown and are not rounded to zero.",
+    "caseRefs": [
+      "case-route-compare-missing"
+    ]
+  }
+}

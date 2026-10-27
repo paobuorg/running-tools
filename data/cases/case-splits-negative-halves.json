@@ -1,0 +1,20 @@
+{
+  "caseId": "case-splits-negative-halves",
+  "toolId": "tool:splits",
+  "input": {
+    "totalDistance": 10,
+    "distanceUnit": "km",
+    "totalSeconds": 3000,
+    "splitDistance": 5,
+    "strategy": "negative",
+    "delta": 0.02
+  },
+  "expected": {
+    "splitCount": 2,
+    "splits": [
+      { "index": 1, "distance": 5, "cumulativeSeconds": 1530, "splitSeconds": 1530 },
+      { "index": 2, "distance": 5, "cumulativeSeconds": 3000, "splitSeconds": 1470 }
+    ]
+  },
+  "basis": "Independent arithmetic: first-half share = (1 + 0.02) / 2 = 0.51, so 3000 × 0.51 = 1530 s. Second-half share = (1 − 0.02) / 2 = 0.49, so 3000 × 0.49 = 1470 s. Sum = 3000 s."
+}

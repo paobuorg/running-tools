@@ -1,0 +1,13 @@
+{
+  "sourceId": "tool-rdp-original",
+  "title": "Algorithms for the reduction of the number of points required to represent a digitized line or its caricature",
+  "url": "https://doi.org/10.3138/FM57-6770-U75U-7727",
+  "publisher": "Cartographica",
+  "publishedAt": null,
+  "accessedAt": "2026-10-26",
+  "claims": [
+    "The Douglas–Peucker procedure approximates a polyline by retaining points that lie beyond a chosen tolerance from a chord.",
+    "Endpoints are retained and the approximation is refined iteratively between retained points."
+  ],
+  "license": null
+}

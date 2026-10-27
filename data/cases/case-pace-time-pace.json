@@ -1,0 +1,19 @@
+{
+  "caseId": "case-pace-time-pace",
+  "toolId": "tool:pace",
+  "input": {
+    "mode": "time-pace",
+    "durationSeconds": 2400,
+    "paceSeconds": 480,
+    "paceUnit": "mi",
+    "distanceUnit": "mi"
+  },
+  "expected": {
+    "distance": 5,
+    "distanceKm": 8.04672,
+    "paceSecondsPerKm": 298,
+    "paceSecondsPerMile": 480,
+    "speedKmh": 12.07
+  },
+  "basis": "Independent arithmetic: 2400 s ÷ 480 s/mi = 5 mi. 5 × 1.609344 = 8.04672 km. 2400 s ÷ 8.04672 km = 298.258 s/km, rounded to 298; speed is 8.04672 km ÷ (2400/3600) h = 12.07008 km/h, rounded to 12.07."
+}

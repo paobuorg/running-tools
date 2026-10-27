@@ -1,0 +1,33 @@
+{
+  "caseId": "case-route-compare-missing",
+  "toolId": "tool:route-compare",
+  "input": {
+    "routes": [
+      {
+        "routeId": "synthetic-alpha",
+        "distanceMeters": 42195,
+        "elevationGainMeters": 300,
+        "surface": "road",
+        "technicality": null
+      },
+      {
+        "routeId": "synthetic-beta",
+        "distanceMeters": 21097.5,
+        "elevationGainMeters": null,
+        "surface": null,
+        "technicality": null
+      }
+    ]
+  },
+  "expected": {
+    "routeCount": 2,
+    "rows": [
+      { "key": "distance", "values": [42195, 21097.5] },
+      { "key": "elevation", "values": [300, null] },
+      { "key": "surface", "values": ["road", null] },
+      { "key": "technicality", "values": [null, null] }
+    ],
+    "rankingProduced": false
+  },
+  "basis": "Synthetic unit-level case, not a real race: after the UI resolves routeIds to published route records, two routes are compared field by field. Missing elevation, surface and technicality stay null and must be shown as unknown, never as zero. The output has no safety or difficulty ranking."
+}

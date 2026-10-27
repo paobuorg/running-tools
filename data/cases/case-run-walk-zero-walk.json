@@ -1,0 +1,23 @@
+{
+  "caseId": "case-run-walk-zero-walk",
+  "toolId": "tool:run-walk",
+  "input": {
+    "mode": "cycles",
+    "runSeconds": 90,
+    "walkSeconds": 0,
+    "cycles": 2
+  },
+  "expected": {
+    "requestedSeconds": 180,
+    "scheduledSeconds": 180,
+    "fullCycles": 2,
+    "runSecondsTotal": 180,
+    "walkSecondsTotal": 0,
+    "truncated": false,
+    "segments": [
+      { "cycle": 1, "kind": "run", "seconds": 90, "partial": false },
+      { "cycle": 2, "kind": "run", "seconds": 90, "partial": false }
+    ]
+  },
+  "basis": "Independent arithmetic: with a walk of 0 s the cycle is just the 90 s run. 2 cycles = 180 s of running. No zero-length walk rows are produced."
+}

@@ -1,0 +1,138 @@
+{
+  "entityId": "tool:track-simplify",
+  "slug": "track-simplify",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "general",
+  "sourceRefs": [
+    "tool-gpx-standard",
+    "tool-geojson-rfc",
+    "tool-rdp-original",
+    "tool-ramer-1972"
+  ],
+  "relatedRefs": [
+    "tool:track-view",
+    "tool:track-convert"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-26",
+  "updatedAt": "2026-10-27",
+  "reviewedAt": "2026-10-27",
+  "reviewDueAt": "2027-10-27",
+  "translations": [],
+  "details": {
+    "toolId": "tool:track-simplify",
+    "specVersion": "1.0.0",
+    "inputs": [
+      {
+        "name": "trackFile",
+        "type": "file",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "GPX 或 GeoJSON 线路文件",
+          "en": "GPX or GeoJSON line file"
+        }
+      },
+      {
+        "name": "toleranceMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "minimum": 1,
+        "maximum": 100,
+        "labels": {
+          "zh-CN": "投影容差（米）",
+          "en": "Projected tolerance (metres)"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "simplifiedFile",
+        "type": "object",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "简化后线路文件",
+          "en": "Simplified line file"
+        }
+      },
+      {
+        "name": "originalPointCount",
+        "type": "number",
+        "unit": "points",
+        "required": true,
+        "labels": {
+          "zh-CN": "原始点数",
+          "en": "Original point count"
+        }
+      },
+      {
+        "name": "simplifiedPointCount",
+        "type": "number",
+        "unit": "points",
+        "required": true,
+        "labels": {
+          "zh-CN": "简化后点数",
+          "en": "Simplified point count"
+        }
+      },
+      {
+        "name": "distanceBeforeMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "labels": {
+          "zh-CN": "原始测地距离",
+          "en": "Original geodesic distance"
+        }
+      },
+      {
+        "name": "distanceAfterMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "labels": {
+          "zh-CN": "简化后测地距离",
+          "en": "Simplified geodesic distance"
+        }
+      },
+      {
+        "name": "distanceDeltaMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "labels": {
+          "zh-CN": "距离变化",
+          "en": "Distance change"
+        }
+      },
+      {
+        "name": "segmentStats",
+        "type": "array",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "逐段点数与距离",
+          "en": "Per-segment points and distances"
+        }
+      }
+    ],
+    "formulaDescription": "Simplify each segment independently. Project its coordinates to local metres using an equirectangular approximation around the segment's mean latitude, run an iterative Ramer–Douglas–Peucker pass with the entered tolerance, and keep the original first and last points. Separate segments are not joined. Distances before and after use WGS84 geodesic inverse distances. The output is written in the input format with original coordinates for retained points.",
+    "assumptions": [
+      "The tolerance is measured in the local projected plane, not as a geodesic distance; output distance change is reported separately in WGS84 metres.",
+      "A segment is refused when its longitude span exceeds 180 degrees, any point lies beyond 85 degrees latitude, or its projected bounding-box diagonal exceeds 500 km.",
+      "Only line geometry is accepted; unsupported geometry is rejected rather than discarded.",
+      "Simplification removes points, including their elevation values; retained points keep their original coordinates and elevation.",
+      "The simplified file is a new download. The original file is never modified or overwritten.",
+      "Input files are limited to 20 MB and 200,000 coordinate points; larger files are rejected before simplification.",
+      "Input files are limited to 20 MB and 200,000 coordinate points; larger files are rejected before processing.",
+      "The page starts with a 10 m tolerance, but the value is required and must be between 1 and 100 m."
+    ],
+    "rounding": "Tolerance is used as entered (1 to 100 metres); point counts are whole numbers; distances are reported to the nearest whole metre; retained coordinates are not rounded by the tool.",
+    "caseRefs": [
+      "case-track-simplify-offset"
+    ]
+  }
+}

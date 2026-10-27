@@ -1,0 +1,36 @@
+{
+  "caseId": "case-splits-partial",
+  "toolId": "tool:splits",
+  "input": {
+    "totalDistance": 5,
+    "distanceUnit": "km",
+    "totalSeconds": 1500,
+    "splitDistance": 2,
+    "strategy": "even",
+    "delta": 0.02
+  },
+  "expected": {
+    "splitCount": 3,
+    "splits": [
+      {
+        "index": 1,
+        "distance": 2,
+        "cumulativeSeconds": 600,
+        "splitSeconds": 600
+      },
+      {
+        "index": 2,
+        "distance": 2,
+        "cumulativeSeconds": 1200,
+        "splitSeconds": 600
+      },
+      {
+        "index": 3,
+        "distance": 1,
+        "cumulativeSeconds": 1500,
+        "splitSeconds": 300
+      }
+    ]
+  },
+  "basis": "Independent arithmetic: 1500 s / 5 km = 300 s/km. Two full 2 km splits take 600 s each; the final 1 km split takes 300 s, and 600 + 600 + 300 = 1500 s."
+}

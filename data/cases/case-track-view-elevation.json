@@ -1,0 +1,20 @@
+{
+  "caseId": "case-track-view-elevation",
+  "toolId": "tool:track-view",
+  "input": {
+    "format": "geojson",
+    "coordinates": [
+      [0, 0, 10],
+      [0.001, 0, 20],
+      [0.002, 0, 15]
+    ]
+  },
+  "expected": {
+    "distanceMeters": 223,
+    "pointCount": 3,
+    "start": { "longitude": 0, "latitude": 0 },
+    "end": { "longitude": 0.002, "latitude": 0 },
+    "elevationGainMeters": 10
+  },
+  "basis": "Independent arithmetic: 0.002 degrees along the equator is about 222.639 m, rounded to 223 m. Positive elevation changes are +10 m and +0 m after the descent, so gain is 10 m."
+}
