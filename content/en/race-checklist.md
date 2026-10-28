@@ -29,7 +29,7 @@ Generate the list a few days ahead, then handle anything that needs buying, wash
 
 Printing uses only the current page and does not upload the selections. The checklist does not save personal data; close the page on a shared device.
 
-## What this tool does not provide
+## Tool limits
 
 This checklist does not replace a race's mandatory kit list, technical briefing, medical advice or route-safety assessment. Technical trails, extreme weather, night sections or roped routes require specific training and local information.
 

@@ -33,7 +33,7 @@ translationStatus: reviewed
 - 经度跨度超过 180 度，视为可能跨越日界线。
 - 任一点纬度超过 85 度。
 
-这些限制只针对简化。同一文件仍可用[轨迹查看](/zh-CN/tools/track-view/)读取统计，或用[轨迹转换](/zh-CN/tools/track-convert/)改格式。简化输出保持输入格式；若输入是 GPX，输出仍是 GPX，若输入是 GeoJSON，输出仍是 GeoJSON。
+这些限制只针对简化。同一文件仍可用[轨迹查看](/tools/track-view/)读取统计，或用[轨迹转换](/tools/track-convert/)改格式。简化输出保持输入格式；若输入是 GPX，输出仍是 GPX，若输入是 GeoJSON，输出仍是 GeoJSON。
 
 ## 验证算例
 

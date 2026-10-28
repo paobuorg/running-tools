@@ -35,7 +35,7 @@ Start with the distance and climb magnitude, then look for steep climbs, descent
 
 Parsing happens locally. Results are not saved after the page closes. Oversized or malformed files return an error rather than a partial result.
 
-## What this tool does not provide
+## Tool limits
 
 This tool does not verify that a track is the official course, that access is permitted or that the route is suitable for a race. It does not assess rockfall, traffic, weather or technical difficulty. Technical trails, glaciers or roped routes require specific training and local information.
 

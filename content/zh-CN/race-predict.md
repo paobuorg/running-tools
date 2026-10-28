@@ -41,7 +41,7 @@ translationStatus: reviewed
 
 先看估算时间，再看对应的平均配速。若目标配速明显快于你目前能稳定完成的训练配速，这更可能说明目标定得激进，而不是你“只差一个公式”。把估算当作起点，再用一场短距离比赛或节奏跑检验，比直接把它当成比赛目标更稳妥。
 
-需要把估算时间转成逐段计划时，使用[分段配速表](/zh-CN/tools/splits/)；需要核对距离、时间和配速的换算，使用[配速计算器](/zh-CN/tools/pace/)。马拉松标准距离的背景可阅读[马拉松为什么是 42.195 公里](https://learn.paobu.org/zh-CN/articles/marathon-distance/)。
+需要把估算时间转成逐段计划时，使用[分段配速表](/tools/splits/)；需要核对距离、时间和配速的换算，使用[配速计算器](/tools/pace/)。马拉松标准距离的背景可阅读[马拉松为什么是 42.195 公里](https://learn.paobu.org/articles/marathon-distance/)。
 
 ## 验证算例
 

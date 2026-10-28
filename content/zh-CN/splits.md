@@ -48,7 +48,7 @@ translationStatus: reviewed
 
 把表当作**目标的上界或参考**。比赛起跑、补给、坡度和天气会让实际分段不同；如果前半程明显快于表，后半程可能付出代价。负分段表描述的是你主动选择的配速分布，不是保证后半程一定更快。
 
-需要先换算平均配速，可使用[配速计算器](/zh-CN/tools/pace/)。理解马拉松标准距离，可阅读[马拉松为什么是 42.195 公里](https://learn.paobu.org/zh-CN/articles/marathon-distance/)。
+需要先换算平均配速，可使用[配速计算器](/tools/pace/)。理解马拉松标准距离，可阅读[马拉松为什么是 42.195 公里](https://learn.paobu.org/articles/marathon-distance/)。
 
 ## 验证算例
 

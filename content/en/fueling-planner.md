@@ -35,7 +35,7 @@ Split the total across aid stations or carried servings, and set a simple remind
 
 If the plan causes bloating, nausea, frequent stops or energy swings, reduce concentration or portion size before changing products. Persistent gut problems deserve advice from a sports-nutrition or medical professional.
 
-## What this tool does not provide
+## Tool limits
 
 This tool does not provide an individual nutrition prescription, therapeutic diet, fluid target or medical clearance. People with diabetes, gastrointestinal disease, pregnancy, a history of disordered eating or medication use should discuss the plan with a clinician or registered dietitian.
 

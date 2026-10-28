@@ -35,7 +35,7 @@ Check the outsole, toe box and upper after long runs. Consider replacement when 
 
 If pain persists, or you notice swelling, numbness or a change in gait, stop the relevant training and seek medical or sports-professional assessment; a new shoe may not fix load or technique issues.
 
-## What this tool does not provide
+## Tool limits
 
 This tool does not recommend brands or models, decide whether a shoe is “dead” or diagnose foot or lower-limb pain. The reminder is a personal management value.
 
