@@ -1,0 +1,118 @@
+{
+  "entityId": "tool:fueling-planner",
+  "slug": "fueling-planner",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "guidance",
+  "sourceRefs": [
+    "knowledge-issn-carbohydrate-timing",
+    "knowledge-issn-nutrient-timing",
+    "knowledge-nhs-hydration"
+  ],
+  "relatedRefs": [
+    "knowledge:long-run-fueling",
+    "knowledge:hydration",
+    "tool:pace"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-28",
+  "updatedAt": "2026-10-28",
+  "reviewedAt": "2026-10-28",
+  "reviewDueAt": "2027-04-28",
+  "translations": [],
+  "details": {
+    "toolId": "tool:fueling-planner",
+    "specVersion": "1.0.0",
+    "inputs": [
+      {
+        "name": "durationMinutes",
+        "type": "number",
+        "unit": "min",
+        "required": true,
+        "minimum": 10,
+        "maximum": 1440,
+        "labels": {
+          "zh-CN": "预计运动时长（分钟）",
+          "en": "Planned duration (minutes)"
+        }
+      },
+      {
+        "name": "productCarbsGrams",
+        "type": "number",
+        "unit": "g per serving",
+        "required": true,
+        "minimum": 5,
+        "maximum": 100,
+        "labels": {
+          "zh-CN": "每份补给碳水（克）",
+          "en": "Carbohydrate per serving (grams)"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "lowTotalGrams",
+        "type": "number",
+        "unit": "g",
+        "required": true,
+        "labels": {
+          "zh-CN": "碳水总量下限",
+          "en": "Total carbohydrate low"
+        }
+      },
+      {
+        "name": "highTotalGrams",
+        "type": "number",
+        "unit": "g",
+        "required": true,
+        "labels": {
+          "zh-CN": "碳水总量上限",
+          "en": "Total carbohydrate high"
+        }
+      },
+      {
+        "name": "servingsLow",
+        "type": "number",
+        "unit": "servings",
+        "required": true,
+        "labels": {
+          "zh-CN": "份数下限",
+          "en": "Servings low"
+        }
+      },
+      {
+        "name": "servingsHigh",
+        "type": "number",
+        "unit": "servings",
+        "required": true,
+        "labels": {
+          "zh-CN": "份数上限",
+          "en": "Servings high"
+        }
+      },
+      {
+        "name": "schedule",
+        "type": "string",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "建议分发节奏",
+          "en": "Suggested distribution"
+        }
+      }
+    ],
+    "formulaDescription": "For sessions of at least 60 minutes, plan 30-60 grams of carbohydrate per hour. totalLow = 30 × durationHours, totalHigh = 60 × durationHours. servings = ceil(total / carbohydratePerServing). Sessions under 60 minutes return zero planned carbohydrate.",
+    "assumptions": [
+      "The 30-60 g/h range is a planning range from sports-nutrition guidance, not an individual prescription.",
+      "Carbohydrate per serving is read from the product label; gels and drinks vary.",
+      "Fluid and sodium are not calculated because sweat rate and conditions vary; use the hydration guidance separately.",
+      "The plan must be tested in training and adjusted for gastrointestinal tolerance, duration and intensity.",
+      "This tool does not provide medical or dietetic advice."
+    ],
+    "rounding": "Total carbohydrate to the nearest gram; servings rounded up to a whole serving; duration in hours to two decimal places.",
+    "caseRefs": [
+      "case-fueling-planner-90",
+      "case-fueling-planner-180"
+    ]
+  }
+}

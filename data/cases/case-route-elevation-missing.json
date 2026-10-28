@@ -1,0 +1,20 @@
+{
+  "caseId": "case-route-elevation-missing",
+  "toolId": "tool:route-elevation",
+  "input": {
+    "track": {
+      "format": "gpx",
+      "segments": [[
+        { "lon": 0, "lat": 0, "elevation": null },
+        { "lon": 0, "lat": 0.001, "elevation": null }
+      ]]
+    }
+  },
+  "expected": {
+    "gainMeters": null,
+    "lossMeters": null,
+    "profilePoints": 0,
+    "warning": "elevation-missing"
+  },
+  "basis": "No elevation values are present, so gain, loss and profile must remain unknown rather than becoming zero."
+}

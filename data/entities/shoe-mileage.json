@@ -1,0 +1,101 @@
+{
+  "entityId": "tool:shoe-mileage",
+  "slug": "shoe-mileage",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "general",
+  "sourceRefs": [
+    "knowledge-shoe-cushioning",
+    "knowledge-nhs-running-injuries",
+    "knowledge-carbon-plate-review"
+  ],
+  "relatedRefs": [
+    "knowledge:running-shoes",
+    "knowledge:shoe-technology"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-28",
+  "updatedAt": "2026-10-28",
+  "reviewedAt": "2026-10-28",
+  "reviewDueAt": "2027-10-28",
+  "translations": [],
+  "details": {
+    "toolId": "tool:shoe-mileage",
+    "specVersion": "1.0.0",
+    "inputs": [
+      {
+        "name": "shoe",
+        "type": "object",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "跑鞋名称、初始里程、提醒里程",
+          "en": "Shoe name, initial distance and reminder distance"
+        }
+      },
+      {
+        "name": "run",
+        "type": "object",
+        "unit": null,
+        "required": false,
+        "labels": {
+          "zh-CN": "日期与本次距离",
+          "en": "Date and run distance"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalKm",
+        "type": "number",
+        "unit": "km",
+        "required": true,
+        "labels": {
+          "zh-CN": "累计里程",
+          "en": "Total mileage"
+        }
+      },
+      {
+        "name": "remainingKm",
+        "type": "number",
+        "unit": "km",
+        "required": true,
+        "labels": {
+          "zh-CN": "距提醒里程",
+          "en": "Distance to reminder"
+        }
+      },
+      {
+        "name": "percentOfReminder",
+        "type": "number",
+        "unit": "%",
+        "required": true,
+        "labels": {
+          "zh-CN": "提醒进度",
+          "en": "Reminder progress"
+        }
+      },
+      {
+        "name": "runCount",
+        "type": "number",
+        "unit": "runs",
+        "required": true,
+        "labels": {
+          "zh-CN": "记录次数",
+          "en": "Logged runs"
+        }
+      }
+    ],
+    "formulaDescription": "totalKm = initialKm + sum of logged run distances for that shoe. remainingKm = max(0, reminderKm - totalKm). percentOfReminder = totalKm / reminderKm × 100. The reminder is chosen by the user; the tool does not infer a universal replacement mileage.",
+    "assumptions": [
+      "The reminder distance is a user preference, not a manufacturer or medical recommendation.",
+      "Only distances entered in this browser are counted; the data is stored locally.",
+      "The log is not a substitute for inspecting outsole, foam, upper and comfort.",
+      "The tool does not track shoe rotation automatically."
+    ],
+    "rounding": "Distances to one decimal place in kilometres; percentage to one decimal place.",
+    "caseRefs": [
+      "case-shoe-mileage-summary"
+    ]
+  }
+}

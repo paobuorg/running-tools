@@ -1,0 +1,124 @@
+{
+  "entityId": "tool:route-elevation",
+  "slug": "route-elevation",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "general",
+  "sourceRefs": [
+    "tool-gpx-standard",
+    "tool-geojson-rfc",
+    "knowledge-uphill-downhill-running"
+  ],
+  "relatedRefs": [
+    "tool:track-view",
+    "tool:track-simplify",
+    "knowledge:trail-gear"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-28",
+  "updatedAt": "2026-10-28",
+  "reviewedAt": "2026-10-28",
+  "reviewDueAt": "2027-10-28",
+  "translations": [],
+  "details": {
+    "toolId": "tool:route-elevation",
+    "specVersion": "1.0.0",
+    "inputs": [
+      {
+        "name": "trackFile",
+        "type": "file",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "GPX 或 GeoJSON 轨迹文件",
+          "en": "GPX or GeoJSON track file"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "distanceMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "labels": {
+          "zh-CN": "距离",
+          "en": "Distance"
+        }
+      },
+      {
+        "name": "gainMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "labels": {
+          "zh-CN": "累计爬升",
+          "en": "Elevation gain"
+        }
+      },
+      {
+        "name": "lossMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "labels": {
+          "zh-CN": "累计下降",
+          "en": "Elevation loss"
+        }
+      },
+      {
+        "name": "minElevationMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "labels": {
+          "zh-CN": "最低海拔",
+          "en": "Minimum elevation"
+        }
+      },
+      {
+        "name": "maxElevationMeters",
+        "type": "number",
+        "unit": "m",
+        "required": true,
+        "labels": {
+          "zh-CN": "最高海拔",
+          "en": "Maximum elevation"
+        }
+      },
+      {
+        "name": "maxGradePercent",
+        "type": "number",
+        "unit": "%",
+        "required": true,
+        "labels": {
+          "zh-CN": "最大坡度（绝对值）",
+          "en": "Maximum absolute grade"
+        }
+      },
+      {
+        "name": "profile",
+        "type": "array",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "高程剖面",
+          "en": "Elevation profile"
+        }
+      }
+    ],
+    "formulaDescription": "Parse GPX or GeoJSON locally, compute horizontal distance between consecutive points in each segment with the WGS84 haversine formula, sum positive and negative elevation differences, and compute grade = (Δelevation / horizontal distance) × 100 for pairs at least 5 metres apart. If any point lacks elevation, gain, loss and profile are returned as unknown rather than undercounted. Profile is downsampled to at most 160 points for display.",
+    "assumptions": [
+      "Elevation values in the file are treated as supplied; GPS elevation is noisy.",
+      "Separate segments are measured independently and are not joined.",
+      "Grade is a point-to-point estimate, not a smoothed road design grade.",
+      "The file is read in the browser only and is not uploaded.",
+      "The tool does not certify a route or assess surface, technicality or safety."
+    ],
+    "rounding": "Distance, gain and loss to the nearest metre; elevations to one decimal place; grade to one decimal place; profile points keep whole-metre distance and two-decimal elevation.",
+    "caseRefs": [
+      "case-route-elevation-hill",
+      "case-route-elevation-missing"
+    ]
+  }
+}

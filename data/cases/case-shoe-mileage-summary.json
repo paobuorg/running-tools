@@ -1,0 +1,24 @@
+{
+  "caseId": "case-shoe-mileage-summary",
+  "toolId": "tool:shoe-mileage",
+  "input": {
+    "shoe": {
+      "id": "shoe-1",
+      "name": "Daily trainer",
+      "initialKm": 100,
+      "reminderKm": 600
+    },
+    "runs": [
+      { "id": "run-1", "shoeId": "shoe-1", "date": "2026-10-27", "distanceKm": 10 },
+      { "id": "run-2", "shoeId": "shoe-1", "date": "2026-10-28", "distanceKm": 5 }
+    ]
+  },
+  "expected": {
+    "totalKm": 115,
+    "runCount": 2,
+    "remainingKm": 485,
+    "percentOfReminder": 19.2,
+    "lastRunDate": "2026-10-28"
+  },
+  "basis": "Independent arithmetic: 100 + 10 + 5 = 115 km. 600 - 115 = 485 km remaining. 115/600 × 100 = 19.166..., rounded to 19.2%."
+}

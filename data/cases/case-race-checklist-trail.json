@@ -1,0 +1,24 @@
+{
+  "caseId": "case-race-checklist-trail",
+  "toolId": "tool:race-checklist",
+  "input": {
+    "raceType": "trail",
+    "duration": "over-6h",
+    "weather": "hot",
+    "travel": true
+  },
+  "expected": {
+    "sectionIds": [
+      "entry",
+      "clothing",
+      "fuel",
+      "logistics",
+      "heat",
+      "trail",
+      "long-race",
+      "travel"
+    ],
+    "requiredItems": ["headlamp", "heat-warning", "spare-battery", "travel-kit"]
+  },
+  "basis": "Rule-based checklist: baseline sections plus heat, trail, over-6h and travel additions for the selected options."
+}

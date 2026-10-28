@@ -1,0 +1,16 @@
+{
+  "caseId": "case-fueling-planner-90",
+  "toolId": "tool:fueling-planner",
+  "input": {
+    "durationMinutes": 90,
+    "productCarbsGrams": 25
+  },
+  "expected": {
+    "durationHours": 1.5,
+    "lowTotalGrams": 45,
+    "highTotalGrams": 90,
+    "servingsLow": 2,
+    "servingsHigh": 4
+  },
+  "basis": "Independent arithmetic: 90 minutes = 1.5 hours. 30 × 1.5 = 45 g; 60 × 1.5 = 90 g. 45/25 = 1.8, rounded up to 2 servings; 90/25 = 3.6, rounded up to 4."
+}

@@ -1,0 +1,109 @@
+{
+  "entityId": "tool:race-checklist",
+  "slug": "race-checklist",
+  "kind": "tool",
+  "status": "published",
+  "riskLevel": "guidance",
+  "sourceRefs": [
+    "knowledge-nps-ten-essentials",
+    "knowledge-nps-hike-smart",
+    "knowledge-nws-heat-illness",
+    "knowledge-nps-winter"
+  ],
+  "relatedRefs": [
+    "knowledge:route-safety",
+    "knowledge:trail-gear",
+    "knowledge:heat-and-humidity",
+    "knowledge:cold-weather-running"
+  ],
+  "license": "CC-BY-4.0",
+  "createdAt": "2026-10-28",
+  "updatedAt": "2026-10-28",
+  "reviewedAt": "2026-10-28",
+  "reviewDueAt": "2027-04-28",
+  "translations": [],
+  "details": {
+    "toolId": "tool:race-checklist",
+    "specVersion": "1.0.0",
+    "inputs": [
+      {
+        "name": "raceType",
+        "type": "enum",
+        "unit": null,
+        "required": true,
+        "enumValues": [
+          "road",
+          "trail"
+        ],
+        "labels": {
+          "zh-CN": "比赛类型",
+          "en": "Race type"
+        }
+      },
+      {
+        "name": "duration",
+        "type": "enum",
+        "unit": null,
+        "required": true,
+        "enumValues": [
+          "under-3h",
+          "3-6h",
+          "over-6h"
+        ],
+        "labels": {
+          "zh-CN": "预计时长",
+          "en": "Expected duration"
+        }
+      },
+      {
+        "name": "weather",
+        "type": "enum",
+        "unit": null,
+        "required": true,
+        "enumValues": [
+          "mild",
+          "hot",
+          "cold",
+          "rain"
+        ],
+        "labels": {
+          "zh-CN": "天气",
+          "en": "Weather"
+        }
+      },
+      {
+        "name": "travel",
+        "type": "boolean",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "异地参赛",
+          "en": "Travelling to the race"
+        }
+      }
+    ],
+    "outputs": [
+      {
+        "name": "sections",
+        "type": "array",
+        "unit": null,
+        "required": true,
+        "labels": {
+          "zh-CN": "分类清单",
+          "en": "Checklist sections"
+        }
+      }
+    ],
+    "formulaDescription": "A rule-based checklist: baseline entry, clothing, fuel and logistics sections are always included; trail adds navigation and emergency items; hot, cold and rain add weather-specific items; over-6h adds long-race items; travel adds travel items. No prediction or scoring is produced.",
+    "assumptions": [
+      "The checklist is general preparation support, not a race's mandatory kit list.",
+      "Organiser rules, route briefing and medical advice take precedence.",
+      "A checked item means remembered, not tested or guaranteed.",
+      "The tool does not store or upload personal data."
+    ],
+    "rounding": "No numerical rounding; the output is a structured checklist.",
+    "caseRefs": [
+      "case-race-checklist-trail"
+    ]
+  }
+}

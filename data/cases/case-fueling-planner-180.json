@@ -1,0 +1,16 @@
+{
+  "caseId": "case-fueling-planner-180",
+  "toolId": "tool:fueling-planner",
+  "input": {
+    "durationMinutes": 180,
+    "productCarbsGrams": 30
+  },
+  "expected": {
+    "durationHours": 3,
+    "lowTotalGrams": 90,
+    "highTotalGrams": 180,
+    "servingsLow": 3,
+    "servingsHigh": 6
+  },
+  "basis": "Independent arithmetic: 180 minutes = 3 hours. 30 × 3 = 90 g; 60 × 3 = 180 g. 90/30 = 3 servings; 180/30 = 6 servings."
+}

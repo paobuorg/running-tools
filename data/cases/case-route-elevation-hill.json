@@ -1,0 +1,23 @@
+{
+  "caseId": "case-route-elevation-hill",
+  "toolId": "tool:route-elevation",
+  "input": {
+    "track": {
+      "format": "gpx",
+      "segments": [[
+        { "lon": 0, "lat": 0, "elevation": 0 },
+        { "lon": 0, "lat": 0.001, "elevation": 100 },
+        { "lon": 0, "lat": 0.002, "elevation": 0 }
+      ]]
+    }
+  },
+  "expected": {
+    "gainMeters": 100,
+    "lossMeters": 100,
+    "minElevationMeters": 0,
+    "maxElevationMeters": 100,
+    "maxGradePercentAtLeast": 80,
+    "profilePoints": 3
+  },
+  "basis": "Independent elevation arithmetic from the supplied points: +100 m then -100 m; the near-111 m horizontal step gives a grade near 90%, so the expected maximum absolute grade is at least 80%."
+}
