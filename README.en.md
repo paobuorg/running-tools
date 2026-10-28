@@ -6,11 +6,11 @@ This repository holds the tool descriptions, input/output contracts, formula ass
 
 ## Status
 
-- Eight tools: pace, splits, run-walk, race prediction, track view, format conversion, track simplification and route-field comparison. Each has Chinese and English documentation.
-- All eight tools were **AI-assisted editorially reviewed** and published on 2026-10-27 (`published`, with bilingual `approve` records and matching digests). The reviewer is `runmap-editorial`, explicitly AI-assisted, not independent professional review. Physical-device performance remains unverified.
-- Twenty independent cases live in `data/cases/`. They cover the three pace modes, negative splits, truncated run-walk schedules, Riegel predictions, track elevation and simplification offsets.
+- Twelve tools: pace, splits, run-walk, race prediction, fueling planner, track view, format conversion, track simplification, elevation analysis, shoe mileage, race checklist and route-field comparison. Each has Chinese and English documentation.
+- All twelve tools were **AI-assisted editorially reviewed** and published on 2026-10-28 (`published`, with bilingual `approve` records and matching digests). The reviewer is `runmap-editorial`, explicitly AI-assisted, not independent professional review. Physical-device performance remains unverified.
+- Twenty-six independent cases live in `data/cases/`. They cover the three pace modes, negative splits, truncated run-walk schedules, Riegel predictions, track elevation and simplification offsets, fueling durations, missing elevation, shoe-mileage summaries and a trail checklist.
 - The only author/review identity is `runmap-editorial`, shown as “RunMap editorial desk (AI-assisted draft and review)”. There is no personal qualification claim; the approval is an AI-assisted editorial review, not professional review.
-- There is no remote repository, public issue tracker or deployed site yet.
+- The six repositories are published under `paobuorg`, and the tools site is live at `https://tools.paobu.org/`.
 
 ## Tools and methods
 
@@ -20,6 +20,10 @@ This repository holds the tool descriptions, input/output contracts, formula ass
 | Splits `splits` | 1.1.0 | Even or negative splits; default 2% half-marathon difference, limited to 0–10%; whole seconds allocated by largest remainder and conserved exactly |
 | Run-walk `run-walk` | 1.0.0 | Schedule by cycles or total duration; duration mode cuts at the boundary and marks the partial segment; total duration capped at 7 days, cycles at 1000 |
 | Race prediction `race-predict` | 1.0.0 | Riegel formula with a fixed 1.06 exponent; known and target distances limited to 5000–42195 m; not for trail or ultramarathon |
+| Fueling planner `fueling-planner` | 1.0.0 | 30–60 g/h carbohydrate estimate above 60 minutes; rounds up product servings; does not judge personal tolerance or race strategy |
+| Elevation `route-elevation` | 1.0.0 | GPX/GeoJSON line geometry; WGS84 distance; cumulative gain/loss and maximum grade; missing elevation reported as unknown and short segments excluded from grade |
+| Shoe mileage `shoe-mileage` | 1.0.0 | Initial plus logged distance; remaining distance against the user's own reminder threshold; no universal replacement interval |
+| Race checklist `race-checklist` | 1.0.0 | Items derived from road/trail, duration, weather, terrain and travel conditions; a rule-based list, not medical or mandatory advice |
 | Track view `track-view` | 1.0.0 | GPX or GeoJSON line geometry; WGS84 geodesic distance; missing elevation is reported as unknown, never zero |
 | Track conversion `track-convert` | 1.0.0 | GPX and GeoJSON conversion; line geometry only; strips timestamps, device and personal metadata |
 | Track simplification `track-simplify` | 1.0.0 | Per-segment Ramer–Douglas–Peucker; 1–100 m tolerance; segments are not joined; endpoints and original coordinates are kept |
@@ -68,4 +72,4 @@ The build validates bilingual pairing, tool contracts, case references, sources,
 
 Once the repository is hosted, report formula, case or source problems through an issue or pull request that names the specific item. No public issue URL or email address exists yet, and none is invented here. See [CONTRIBUTING.md](CONTRIBUTING.md), whose second half is in English.
 
-Last checked: 2026-10-27.
+Last checked: 2026-10-28.
